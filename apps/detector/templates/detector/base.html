@@ -1,0 +1,19 @@
+<html>
+
+<head>
+    <title>detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div><a href="{{ url_for('detector.index') }}">detector</a></div>
+    <div><a href="{{ url_for('auth.signup') }}">signup</a></div>
+    <div><a href="{{ url_for('auth.login') }}">login</a></div>
+    <div><a href="{{ url_for('auth.logout') }}">logout</a></div>
+    <div>{{ current_user.username }}</div>
+    <div>ID: {{ current_user.id }}</div>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

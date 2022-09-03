@@ -1,0 +1,13 @@
+{% extends "detector/base.html" %}
+{% block content %}
+<br>
+<div><a href="{{ url_for('detector.upload_image') }}">upload new image</a></div>
+{% for user_image in user_images %}
+<div>
+    <div>???</div>
+    <section>
+        <img src="{{ url_for('detector.image_file', filename=user_image.UserImage.image_path) }}" alt="img">
+    </section>
+</div>
+{% endfor %}
+{% endblock %}

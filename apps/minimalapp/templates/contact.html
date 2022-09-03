@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>お問い合わせフォーム</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h2>お問い合わせフォーム</h2>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li class="flash">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('contact_complete') }}" method="POST" novalidate="novalidate">
+        <table>
+            <tr>
+                <td>user name</td>
+                <td>
+                    <input type="text" name="username" value="{{ username }}" placeholder="username">
+                </td>
+            </tr>
+            <tr>
+                <td>mail adress</td>
+                <td>
+                    <input type="email" name="email" value="{{ email }}" placeholder="mail adress">
+                </td>
+            </tr>
+            <tr>
+                <td>description</td>
+                <td>
+                    <textarea name="description" placeholder="discription" cols="30" rows="10">
+                            {{ discription }}
+                        </textarea>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="send">
+    </form>
+</body>
+
+</html>

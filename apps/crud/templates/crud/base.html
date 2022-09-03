@@ -1,0 +1,17 @@
+<html>
+<haed>
+    <title>{% block title %}{% endblock %}</title>
+</haed>
+
+<body>
+    <div>
+        {% if current_user.is_authenticated %}
+        <span>{{ current_user.username }}</span>
+        <span><a href="{{ url_for('auth.logout')}}">logout</a></span>
+        {% endif %}
+    </div>
+
+    {% block content %}{% endblock %}
+</body>
+
+</html>

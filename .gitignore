@@ -1,0 +1,6 @@
+*venv/
+*vscode/
+*.env
+*apps/detector/model.pt
+*local.sqlite
+*__pycache__*

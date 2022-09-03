@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Name</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    {% if name %}
+    <h1>Name:{{ name }}</h1>
+    {% else %}
+    <h1>名無し</h1>
+    {% endif %}
+</body>
+
+</html>

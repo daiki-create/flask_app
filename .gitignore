@@ -2,5 +2,6 @@
 *vscode/
 *.env
 *apps/detector/model.pt
+*apps/images/*
 *local.sqlite
 *__pycache__*

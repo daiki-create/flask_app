@@ -1,10 +1,31 @@
 {% extends "detector/base.html" %}
 {% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
 <br>
 <div><a href="{{ url_for('detector.upload_image') }}">upload new image</a></div>
 {% for user_image in user_images %}
+<br><br>
 <div>
-    <div>???</div>
+    <header>
+        <form action="{{ url_for('detector.detect', image_id=user_image.UserImage.id) }}" method="post">
+            {{ detector_form.csrf_token }}
+            {% if current_user.id == user_image.User.id and user_image.UserImage.is_detected == False %}
+            {{ detector_form.submit() }}
+            {% else %}
+            {{ detector_form.submit(disabled="disabled") }}
+            {% endif %}
+        </form>
+    </header>
     <section>
         <img src="{{ url_for('detector.image_file', filename=user_image.UserImage.image_path) }}" alt="img">
     </section>

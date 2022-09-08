@@ -116,11 +116,12 @@ def exec_detect(target_image_path):
     image = Image.open(target_image_path)
     image_tensor = torchvision.transforms.functional.to_tensor(image)
 
+    print("dbg1")
     model = torch.load(Path(current_app.root_path, "detector", "model.pt"))
     model = model.eval()
-
+    print("dbg2")
     output = model([image_tensor])[0]
-
+    print("dbg3")
     tags = []
     result_image = np.array(image.copy())
     for box, label, score in zip(
